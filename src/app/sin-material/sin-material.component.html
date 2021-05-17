@@ -39,7 +39,7 @@
               name="age-input"
               [(ngModel)]="usuario.edad"
               [ngClass]="{'is-valid': !age.valid, 'is-invalid': age.invalid}" 
-              placeholder="Edad" pattern="/^100|[1-9]?\d$/"
+              placeholder="Edad" pattern="/^125|[0-9]?\d$/"
               minlength="0" maxlength="3" required>
             <div class="invalid-feedback"  *ngIf="age.invalid && (age.dirty || age.touched)">
               <div *ngIf="age.errors.required">Por favor, rellene este campo</div>
@@ -52,7 +52,7 @@
               #dni="ngModel" 
               [(ngModel)]="usuario.dni" 
               [ngClass]="{'is-valid': !dni.valid, 'is-invalid': dni.invalid}"
-              placeholder="DNI" 
+              placeholder="DNI" pattern="/(\d{8})([a-zA-Z]{1})/" 
               name="dni"
               minlength="9" maxlength="9" required>
             <div class="invalid-feedback"  *ngIf="dni.invalid && (dni.dirty || dni.touched)">
