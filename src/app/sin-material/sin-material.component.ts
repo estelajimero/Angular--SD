@@ -1,6 +1,6 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormGroup, FormControl, Validator } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validator, NG_VALIDATORS } from '@angular/forms';
 import { Usuario } from './../usuario';
 
 @Component({
@@ -8,8 +8,10 @@ import { Usuario } from './../usuario';
   templateUrl: './sin-material.component.html',
   styleUrls: ['./sin-material.component.css']
 })
+
+
 export class SinMaterialComponent implements OnInit {
-  
+
   accion          : String = 'registrar'
   posicion        : any    = 0
 
@@ -34,7 +36,7 @@ export class SinMaterialComponent implements OnInit {
             let dia     = fecha.getUTCDay()
             let mes     = fecha.getUTCMonth()
             let anio    = fecha.getUTCFullYear()
-      
+
             this.listaUsuarios.push(this.usuario)
       
             this.usuario = {
@@ -68,4 +70,5 @@ export class SinMaterialComponent implements OnInit {
       
         ngOnInit(): void {
         }
+
     }

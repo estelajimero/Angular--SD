@@ -9,11 +9,14 @@
               [(ngModel)]="usuario.nombre" 
               [ngClass]="{'is-valid': !name.valid, 'is-invalid': name.invalid}"
               placeholder="Nombre"
+              title="Introduzca un nombre con al menos 3 caracteres"
+              pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"
               name="name" 
               minlength="3" required>
             <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
               <div *ngIf="name.errors.minlength">Introduzca un nombre con 3 caracteres mínimo</div>
-              <div *ngIf="name.errors.required">Introduzca un nombre de pila válido</div>
+              <div *ngIf="name.errors.required">Por favor, rellene este campo</div>
+              <div *ngIf="name.errors.pattern">Nombre incorrecto</div>
             </div>
           </mat-form-field>
           <mat-form-field class="example-form-field">
@@ -24,11 +27,14 @@
               [(ngModel)]="usuario.apellidos" 
               [ngClass]="{'is-valid': !surname.valid, 'is-invalid': surname.invalid}"
               placeholder="Apellidos" 
+              title="Introduzca un apellido con al menos 3 caracteres"
+              pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"
               name="surname"
               minlength="3" required>
             <div class="invalid-feedback" *ngIf="surname.invalid && (surname.dirty || surname.touched)">
               <div *ngIf="surname.errors.minlength">Introduzca un apellido con 3 caracteres mínimo</div>
               <div *ngIf="surname.errors.required">Por favor, rellene este campo</div>
+              <div *ngIf="surname.errors.pattern">Apellidos incorrectos</div>	
             </div>
           </mat-form-field>
           <mat-form-field class="example-form-field">
@@ -37,12 +43,16 @@
               id="age-input" 
               #age="ngModel"
               name="age-input"
+              minlength="1" maxlength="3"
+              title="Introduzca solamente números del 0 al 125"
               [(ngModel)]="usuario.edad"
               [ngClass]="{'is-valid': !age.valid, 'is-invalid': age.invalid}" 
-              placeholder="Edad" pattern="/^125|[0-9]?\d$/"
-              minlength="0" maxlength="3" required>
-            <div class="invalid-feedback"  *ngIf="age.invalid && (age.dirty || age.touched)">
-              <div *ngIf="age.errors.required">Por favor, rellene este campo</div>
+              placeholder="Edad"
+              pattern="\b([1-9]|[1-9][0-9]|1[01][0-9]|12[0-5])\b"
+              required>
+            <div class="invalid-feedback" *ngIf="age.invalid && (age.dirty || age.touched)">
+              <div *ngIf="age.errors.required">Introduzca solamente números del 0 al 125</div>
+              <div *ngIf="age.errors.pattern">Introduzca solamente números del 0 al 125</div>
             </div>
           </mat-form-field>
           <mat-form-field class="example-form-field">
@@ -52,12 +62,15 @@
               #dni="ngModel" 
               [(ngModel)]="usuario.dni" 
               [ngClass]="{'is-valid': !dni.valid, 'is-invalid': dni.invalid}"
-              placeholder="DNI" pattern="/(\d{8})([a-zA-Z]{1})/" 
+              placeholder="DNI"
+              title="Introduzca una combinación de 8 números y una letra"
+              pattern="^[0-9]{8,8}[A-Za-z]$"
               name="dni"
               minlength="9" maxlength="9" required>
             <div class="invalid-feedback"  *ngIf="dni.invalid && (dni.dirty || dni.touched)">
               <div *ngIf="dni.errors.minlength">Introduzca un DNI con 9 caracteres</div>
               <div *ngIf="dni.errors.required">Por favor, rellene este campo</div>
+              <div *ngIf="dni.errors.pattern">Introduzca 9 caracteres numéricos y una letra</div>	
             </div>
           </mat-form-field>        
         <div class="form-bottom">
@@ -81,7 +94,10 @@
                   [(ngModel)]="usuario.colorFavorito" 
                   [ngClass]="{'is-valid': !color.valid, 'is-invalid': color.invalid}"
                   placeholder="Color Favorito"
+                  title="Introduzca un color con mínimo 3 caracteres"
+                  pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"
                   name="color"
+                  minlength="3"
                   required>
                 <div class="invalid-feedback" *ngIf="color.invalid && (color.dirty || color.touched)">
                   <div *ngIf="color.errors.required">Por favor, rellene este campo</div>
