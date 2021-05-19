@@ -51,7 +51,7 @@
               pattern="\b([1-9]|[1-9][0-9]|1[01][0-9]|12[0-5])\b"
               required>
             <div class="invalid-feedback" *ngIf="age.invalid && (age.dirty || age.touched)">
-              <div *ngIf="age.errors.required">Introduzca solamente números del 0 al 125</div>
+              <div *ngIf="age.errors.required">Por favor, rellene este campo</div>
               <div *ngIf="age.errors.pattern">Introduzca solamente números del 0 al 125</div>
             </div>
           </mat-form-field>
