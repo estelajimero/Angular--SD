@@ -9,6 +9,8 @@ import { SinMaterialComponent } from './sin-material/sin-material.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations' ;
 import { MaterialModule } from './material/material.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { MaterialModule } from './material/material.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     NoopAnimationsModule,
     MaterialModule,

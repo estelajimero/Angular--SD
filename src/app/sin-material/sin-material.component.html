@@ -48,7 +48,7 @@
               [(ngModel)]="usuario.edad"
               [ngClass]="{'is-valid': !age.valid, 'is-invalid': age.invalid}" 
               placeholder="Edad"
-              pattern="\b([1-9]|[1-9][0-9]|1[01][0-9]|12[0-5])\b"
+              pattern="\b([0-9]|[1-9][0-9]|1[01][0-9]|12[0-5])\b"
               required>
             <div class="invalid-feedback" *ngIf="age.invalid && (age.dirty || age.touched)">
               <div *ngIf="age.errors.required">Por favor, rellene este campo</div>
@@ -109,23 +109,18 @@
         <select name="gender" id="gender-input" class="gender.input"
         #sex="ngModel" [(ngModel)]="usuario.sexo"
         required [ngClass]="{'is-valid': !sex.valid, 'is-invalid': sex.invalid}">
-          <option value="man">Hombre</option>
-          <option value="woman">Mujer</option>
-          <option value="other">Otro</option>
-          <option value="unspecified">No especificado</option>
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="No binario">No binario</option>
+          <option value="Prefiero no decirlo">Prefiero no decirlo</option>
           <div class="invalid-feedback"  *ngIf="sex.invalid && (sex.dirty || sex.touched)">
             <div *ngIf="sex.errors.required">Por favor, rellene este campo</div>
           </div>
         </select>
-    
         <button mat-flat-button class="submit" type="submit" [disabled]="!formulario.valid">
           Registrar
         </button>
     </form>
-</div>
-<div class="form-wrapper">    
-    <h2 class="title-form">Usuario Actual</h2>
-    <p class="actual-user" *ngFor="let usuario of listaUsuarios; let i= index">{{usuario | json}}</p>
 </div>
 <div class="form-wrapper">
     <h2 class="title-form">Lista Usuarios</h2>
@@ -137,6 +132,7 @@
             <p class="p-list">Cumpleaños: {{cadaUsuario.cumpleanos | date: 'dd/MM/yyyy'}}</p>
             <p class="p-list">Color favorito: {{cadaUsuario.colorFavorito}}</p>
             <p class="p-list">Género: {{cadaUsuario.sexo}}</p>
+            <p hidden id="userid">Id: {{cadaUsuario._id}}</p>
 
             <button mat-flat-button class="update-button" (click)="actualizarUsuario(i)">Actualizar</button>
             <button mat-flat-button class="erase-button" (click)="borrarUsuario(i)">Borrar</button>
